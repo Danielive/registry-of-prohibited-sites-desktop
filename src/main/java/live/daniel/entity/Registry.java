@@ -2,9 +2,6 @@ package live.daniel.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by Daniel on 12.10.2017.
- */
 @Entity
 @Table(name = "Registry")
 public class Registry {

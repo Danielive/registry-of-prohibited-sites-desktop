@@ -1,8 +1,6 @@
 package live.daniel.controller;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,25 +12,15 @@ import live.daniel.entity.Registry;
 import live.daniel.service.RegistryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-
 import javax.annotation.PostConstruct;
 import java.util.List;
 
-/**
- * Date: 27.08.15
- * Time: 11:10
- *
- * @author Ruslan Molchanov (ruslanys@gmail.com)
- * @author http://mruslan.com
- */
 @SuppressWarnings("SpringJavaAutowiringInspection")
 public class MainController {
 
-    // Инъекции Spring
     @Autowired
     private RegistryService registryService;
 
-    // Инъекции JavaFX
     @FXML private TableView<Registry> table;
     @FXML private TextField txtLink;
     @FXML private TextField txtIP;
@@ -46,17 +34,11 @@ public class MainController {
     @FXML
     protected TableColumn<Registry, String> date;
 
-
-    private Long countSitesL;
-    // Variables
     private ObservableList<Registry> data;
 
     /**
      * Инициализация контроллера от JavaFX.
      * Метод вызывается после того как FXML загрузчик произвел инъекции полей.
-     *
-     * Обратите внимание, что имя метода <b>обязательно</b> должно быть "initialize",
-     * в противном случае, метод не вызовется.
      *
      * Также на этом этапе еще отсутствуют бины спринга
      * и для инициализации лучше использовать метод,
@@ -72,7 +54,6 @@ public class MainController {
     /**
      * На этом этапе уже произведены все возможные инъекции.
      */
-    @SuppressWarnings("unchecked")
     @PostConstruct
     public void init() {
         List<Registry> registries = registryService.findAll();
@@ -87,14 +68,10 @@ public class MainController {
     }
 
     private void updateCountSites() {
-        countSitesL = registryService.countSites();
+        Long countSitesL = registryService.countSites();
         countSites.setText("Всего сайтов в реестре: " + countSitesL.toString());
     }
 
-    /**
-     * Метод, вызываемый при нажатии на кнопку "Добавить".
-     * Привязан к кнопке в FXML файле представления.
-     */
     @FXML
     public void addSite() {
         String link = txtLink.getText();

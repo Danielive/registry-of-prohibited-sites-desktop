@@ -19,7 +19,7 @@ public class ControllersConfiguration {
 
     /**
      * Именно благодаря этому методу мы добавили контроллер в контекст спринга,
-     * и заставили его сделать произвести все необходимые инъекции.
+     * и заставили его произвести все необходимые инъекции.
      */
     @Bean
     public MainController getMainController() throws IOException {
@@ -31,7 +31,7 @@ public class ControllersConfiguration {
      * Как раз-таки на этом этапе будет создан объект-контроллер,
      * произведены все FXML инъекции и вызван метод инициализации контроллера.
      */
-    protected ViewHolder loadView(String url) throws IOException {
+    private ViewHolder loadView(String url) throws IOException {
         InputStream fxmlStream = null;
         try {
             fxmlStream = getClass().getClassLoader().getResourceAsStream(url);

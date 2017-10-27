@@ -8,7 +8,7 @@ public abstract class AbstractJavaFxApplicationSupport extends Application {
 
     private static String[] savedArgs;
 
-    protected ConfigurableApplicationContext context;
+    private ConfigurableApplicationContext context;
 
     @Override
     public void init() throws Exception {
@@ -22,7 +22,7 @@ public abstract class AbstractJavaFxApplicationSupport extends Application {
         context.close();
     }
 
-    protected static void launchApp(Class<? extends AbstractJavaFxApplicationSupport> appClass, String[] args) {
+    static void launchApp(Class<? extends AbstractJavaFxApplicationSupport> appClass, String[] args) {
         AbstractJavaFxApplicationSupport.savedArgs = args;
         Application.launch(appClass, args);
     }
