@@ -1,1 +1,1 @@
-# registry-of-prohibited-sites-desktop
+# Registry of prohibited sites on desktop
